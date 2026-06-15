@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include "intake.h"
 using namespace std;
 
@@ -43,15 +44,15 @@ void addPackage() {
         clearBuffer();
         cin >> p.weight;
     }
-    clearBuffer();
+    //clearBuffer();
 
     cout << "Enter Priority (1 = Express, 2 = Standard): ";
     cin >> p.priority;
     while (cin.fail() || (p.priority != 1 && p.priority != 2)) {
         if (cin.fail()) {
-            cout << "Invalid input. Enter Priority (1 = Express, 2 = Standard): ";
+            cout << "\nInvalid input. Enter Priority (1 = Express, 2 = Standard): ";
         } else {
-            cout << "Invalid priority. Enter Priority (1 = Express, 2 = Standard): ";
+            cout << "\nInvalid priority. Enter Priority (1 = Express, 2 = Standard): ";
         }
         clearBuffer();
         cin >> p.priority;
@@ -207,13 +208,13 @@ void displayAllPackages() {
     cout << "\n--- All Packages (" << packageCount << " total) ---" << endl;
 
     for (int i = 0; i < packageCount; i++) {
-        cout << "[" << i + 1 << "] "
-             << "ID: " << packages[i].trackingID
-             << " | Sender: " << packages[i].senderName
-             << " | Receiver: " << packages[i].receiverName
-             << " | Dest: " << packages[i].destination
-             << " | " << packages[i].weight << "kg"
-             << " | " << packages[i].getPriorityStr()
-             << " | " << packages[i].status << endl;
+        cout << "[" << setw(2) << right << (i + 1) << "] "
+             << "ID: " << left << setw(12) << packages[i].trackingID
+             << " | Sender: " << setw(15) << packages[i].senderName
+             << " | Receiver: " << setw(15) << packages[i].receiverName
+             << " | Dest: " << setw(15) << packages[i].destination
+             << " | " << right << fixed << setprecision(1) << setw(6) << packages[i].weight << " kg"
+             << " | " << left << setw(10) << packages[i].getPriorityStr()
+             << " | " << setw(10) << packages[i].status << endl;
     }
 }
