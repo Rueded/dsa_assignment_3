@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include "priority.h"
 using namespace std;
 
@@ -39,11 +40,11 @@ void viewPriorityQueue() {
     for (int i = 0; i < count; i++) {
         int k = idx[i];
 
-        cout << i + 1 << ". "
-             << packages[k].trackingID
-             << " | Dest: " << packages[k].destination
-             << " | " << packages[k].weight << "kg"
-             << " | " << packages[k].getPriorityStr() << endl;
+        cout << setw(2) << right << (i + 1) << ". "
+             << left << setw(12) << packages[k].trackingID
+             << " | Dest: " << setw(15) << packages[k].destination
+             << " | " << right << fixed << setprecision(1) << setw(6) << packages[k].weight << " kg"
+             << " | " << left << setw(10) << packages[k].getPriorityStr() << endl;
     }
 
     cout << "Total pending: " << count << endl;
