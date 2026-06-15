@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include "search.h"
 using namespace std;
 
@@ -149,10 +150,11 @@ void generateSummaryReport() {
             if (trucks[i].departed) status = "Departed";
             else status = "Available";
 
-            cout << "  " << trucks[i].truckID
-                 << " | Dest: " << trucks[i].destination
-                 << " | Load: " << trucks[i].currentLoad << "/" << trucks[i].maxCapacity << " kg"
-                 << " | " << status << endl;
+            cout << "  " << left << setw(8) << trucks[i].truckID
+                 << " | Dest: " << setw(15) << trucks[i].destination
+                 << " | Load: " << right << fixed << setprecision(1) << setw(6) << trucks[i].currentLoad
+                 << "/" << setw(6) << trucks[i].maxCapacity << " kg"
+                 << " | " << left << status << endl;
         }
     }
 
@@ -176,10 +178,10 @@ void displayDeliveredPackages() {
                 truckName = trucks[packages[i].truckIndex].truckID;
             }
 
-            cout << packages[i].trackingID
-                 << " | Receiver: " << packages[i].receiverName
-                 << " | Dest: " << packages[i].destination
-                 << " | Truck: " << truckName << endl;
+            cout << left << setw(12) << packages[i].trackingID
+                 << " | Receiver: " << setw(15) << packages[i].receiverName
+                 << " | Dest: " << setw(15) << packages[i].destination
+                 << " | Truck: " << setw(10) << truckName << endl;
             count++;
         }
     }
