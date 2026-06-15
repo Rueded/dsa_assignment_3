@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include "capacity.h"
 using namespace std;
 
@@ -59,13 +60,13 @@ void displayAllTrucks() {
         if (trucks[i].departed) status = "Departed";
         else status = "Available";
 
-        cout << "[" << i + 1 << "] "
-             << "ID: " << trucks[i].truckID
-             << " | Dest: " << trucks[i].destination
-             << " | Max: " << trucks[i].maxCapacity << "kg"
-             << " | Load: " << trucks[i].currentLoad << "kg"
-             << " | Remaining: " << remaining << "kg"
-             << " | " << status << endl;
+        cout << "[" << setw(2) << right << (i + 1) << "] "
+             << "ID: " << left << setw(8) << trucks[i].truckID
+             << " | Dest: " << setw(15) << trucks[i].destination
+             << " | Max: " << right << fixed << setprecision(1) << setw(6) << trucks[i].maxCapacity << " kg"
+             << " | Load: " << setw(6) << trucks[i].currentLoad << " kg"
+             << " | Remaining: " << setw(6) << remaining << " kg"
+             << " | " << left << setw(10) << status << endl;
     }
 }
 
