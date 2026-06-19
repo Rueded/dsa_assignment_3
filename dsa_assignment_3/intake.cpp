@@ -44,7 +44,7 @@ void addPackage() {
         clearBuffer();
         cin >> p.weight;
     }
-    //clearBuffer();
+    clearBuffer();
 
     cout << "Enter Priority (1 = Express, 2 = Standard): ";
     cin >> p.priority;
