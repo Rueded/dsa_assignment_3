@@ -113,6 +113,11 @@ void updatePackageStatus() {
         return;
     }
 
+    if (packages[index].status == "Delivered" || packages[index].status == "Cancelled") {
+        cout << "Cannot change status of a Delivered or Cancelled package." << endl;
+        return;
+    }
+
     bool oldStatusLoaded = (packages[index].status == "Loaded");
     int oldTruckIdx = packages[index].truckIndex;
 
