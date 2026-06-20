@@ -140,8 +140,10 @@ void updatePackageStatus() {
     else if (choice == 4) newStatus = "Cancelled";
 
     if (newStatus == packages[index].status) {
+    if (newStatus != "Loaded") { 
         cout << "Status is already " << newStatus << "." << endl;
         return;
+        }
     }
 
     if (newStatus == "Loaded") {
